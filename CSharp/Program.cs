@@ -1,6 +1,5 @@
 ﻿using EngineeringDays.Chapter2;
 
-Problem28.GetRightMostDigit(10.12564f);
-Problem29.GetSecondRightMostDigit(10.12564f);
-Problem29.GetSecondRightMostDigit(50.12564f);
-Problem29.GetSecondRightMostDigit(100.12564f);
+Problem28.GetRightMostDigit();
+Problem29.GetSecondRightMostDigit();
+Problem30.CalculateAreaPerimeterOfRectangle(5, 2);
