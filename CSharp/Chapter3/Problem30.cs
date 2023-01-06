@@ -1,4 +1,4 @@
-﻿namespace EngineeringDays.Chapter2;
+﻿namespace EngineeringDays.Chapter3;
 
 /// <summary>
 /// Print area and perimeter of a rectangle
@@ -6,7 +6,7 @@
 internal static class Problem30
 {
     public static void CalculateAreaPerimeterOfRectangle(ushort length = 1, ushort breadth = 1) =>
-        Console.WriteLine($"Length: {length} Breadth: {breadth} | Area = {length * breadth}; Perimeter = {2*(length + breadth)}");
-    
+        Console.WriteLine($"Length: {length} Breadth: {breadth} | Area = {length * breadth}; Perimeter = {2 * (length + breadth)}");
+
 }
 

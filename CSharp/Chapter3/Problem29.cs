@@ -1,4 +1,4 @@
-﻿namespace EngineeringDays.Chapter2;
+﻿namespace EngineeringDays.Chapter3;
 
 /// <summary>
 /// Extract and print the second rightmost digit of the integral part of a float
