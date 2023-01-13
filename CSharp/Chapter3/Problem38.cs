@@ -8,7 +8,7 @@ internal static class Problem38
         for (short i = 0; i < rows; i++)
         {
             for (short j = i; j < rows; j++)
-                Write($"{j}  ");
+                Write($"|");
             WriteLine();
         }
     }
