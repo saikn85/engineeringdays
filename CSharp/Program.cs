@@ -8,3 +8,4 @@ Problem36.ConvertInchToInchMetrics(39.37);
 Problem37.FibonacciNumber(10);
 Problem38.PrintNumberPatternScreenOrigin();
 Problem38.PrintNumberPatternAwayOrigin();
+Problem39.GenerateBill();
