@@ -16,15 +16,15 @@ internal static class Problem39
 
         WriteLine("Please enter the quantities sold for the following products");
         Write("Units of TV Sold: ");
-        string? tvUnits = ReadLine();
+        string tvUnits = ReadLine() ?? "10";
         Write("Units of VCR Sold: ");
-        string? vcrUnits = ReadLine();
+        string? vcrUnits = ReadLine() ?? "10";
         Write("Units of RC Sold: ");
-        string? rcUnits = ReadLine();
+        string? rcUnits = ReadLine() ?? "10";
         Write("Units of CD Player Sold: ");
-        string? cdUnits = ReadLine();
+        string? cdUnits = ReadLine() ?? "10";
         Write("Units of Tape Recorder Sold: ");
-        string? tpUnits = ReadLine();
+        string? tpUnits = ReadLine() ?? "10";
 
 
         if (!byte.TryParse(tvUnits, out byte tvUnitsSold))
