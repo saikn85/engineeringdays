@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using System;
 using static System.Console;
 
 namespace EngineeringDays.Chapter3;

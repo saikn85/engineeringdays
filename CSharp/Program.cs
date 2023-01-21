@@ -1,4 +1,5 @@
 ﻿using EngineeringDays.Chapter3;
+using EngineeringDays.Chapter4;
 
 Problem28.GetRightMostDigit();
 Problem29.GetSecondRightMostDigit();
@@ -9,3 +10,4 @@ Problem37.FibonacciNumber(10);
 Problem38.PrintNumberPatternScreenOrigin();
 Problem38.PrintNumberPatternAwayOrigin();
 Problem39.GenerateBill();
+Problem35.SumDigits();
