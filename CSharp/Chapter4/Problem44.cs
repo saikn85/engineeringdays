@@ -7,11 +7,8 @@ internal static class Problem44
 {
     public static void GenerateBillForCarpetCleaning()
     {
-        const decimal laborCost = 0.35m;
-        
         ReadValues(out byte length, out byte width, out decimal discount, out decimal costPerSqFt);
-        decimal installedPrice = ComputeInstalledPrice(length, width, costPerSqFt) + laborCost;
-        
+        decimal installedPrice = ComputeInstalledPrice(length, width, costPerSqFt);
 
         StringBuilder sb = new();
         //sb.AppendLine("Description\tQuantity\tUnit Price\tTotal Price");
@@ -28,6 +25,12 @@ internal static class Problem44
 
         WriteLine("The Report");
         WriteLine(sb.ToString());
+    }
+
+    private static decimal ComputeInstalledPrice(byte length, byte width, decimal costPerSqFt)
+    {
+        const decimal laborCost = 0.35m;
+        byte area = (byte)(length * width);
     }
 
     private static void ReadValues(out byte length, out byte width, out decimal discount, out decimal costPerSqFt)
@@ -51,8 +54,4 @@ internal static class Problem44
         if (!decimal.TryParse(cost, out costPerSqFt))
             costPerSqFt = 12.50m;
     }
-
-    private static decimal ComputeInstalledPrice(byte length, byte width, decimal costPerSqFt) =>
-        length * width * costPerSqFt;
-
 }
