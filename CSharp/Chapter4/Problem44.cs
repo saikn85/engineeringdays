@@ -7,8 +7,8 @@ internal static class Problem44
 {
     public static void GenerateBillForCarpetCleaning()
     {
-        ReadValues(out byte length, out byte width, out decimal discount, out decimal costPerSqFt);
-        decimal installedPrice = ComputeInstalledPrice(length, width, costPerSqFt);
+        ReadValues(out ushort length, out ushort width, out decimal discount, out decimal costPerSqFt);
+        (decimal installedPrice, decimal totalLaborCost) = ComputeInstalledPrice(length, width, costPerSqFt);
 
         StringBuilder sb = new();
         //sb.AppendLine("Description\tQuantity\tUnit Price\tTotal Price");
@@ -27,13 +27,14 @@ internal static class Problem44
         WriteLine(sb.ToString());
     }
 
-    private static decimal ComputeInstalledPrice(byte length, byte width, decimal costPerSqFt)
+    private static (decimal, decimal) ComputeInstalledPrice(ushort length, ushort width, decimal costPerSqFt)
     {
         const decimal laborCost = 0.35m;
-        byte area = (byte)(length * width);
+        uint area = (uint)(length * width);
+        return ((costPerSqFt * area), (laborCost * area));
     }
 
-    private static void ReadValues(out byte length, out byte width, out decimal discount, out decimal costPerSqFt)
+    private static void ReadValues(out ushort length, out ushort width, out decimal discount, out decimal costPerSqFt)
     {
         WriteLine("Please enter valid values for the following:");
         Write("Length of Room (feet): ");
@@ -45,9 +46,9 @@ internal static class Problem44
         Write("Cost / Sq. Ft.: ");
         string? cost = ReadLine();
 
-        if (!byte.TryParse(len, out length))
+        if (!ushort.TryParse(len, out length))
             length = 1;
-        if (!byte.TryParse(wdt, out width))
+        if (!ushort.TryParse(wdt, out width))
             width = 1;
         if (!decimal.TryParse(dis, out discount))
             discount = 0.00m;
