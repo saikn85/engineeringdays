@@ -8,7 +8,9 @@ internal static class Problem44
     public static void GenerateBillForCarpetCleaning()
     {
         ReadValues(out ushort length, out ushort width, out decimal discount, out decimal costPerSqFt);
-        (decimal installedPrice, decimal totalLaborCost) = ComputeInstalledPrice(length, width, costPerSqFt);
+        GenerateBill(length, width, costPerSqFt, discount);
+        
+
 
         StringBuilder sb = new();
         //sb.AppendLine("Description\tQuantity\tUnit Price\tTotal Price");
@@ -25,13 +27,6 @@ internal static class Problem44
 
         WriteLine("The Report");
         WriteLine(sb.ToString());
-    }
-
-    private static (decimal, decimal) ComputeInstalledPrice(ushort length, ushort width, decimal costPerSqFt)
-    {
-        const decimal laborCost = 0.35m;
-        uint area = (uint)(length * width);
-        return ((costPerSqFt * area), (laborCost * area));
     }
 
     private static void ReadValues(out ushort length, out ushort width, out decimal discount, out decimal costPerSqFt)
@@ -54,5 +49,24 @@ internal static class Problem44
             discount = 0.00m;
         if (!decimal.TryParse(cost, out costPerSqFt))
             costPerSqFt = 12.50m;
+    }
+
+    private static void GenerateBill(ushort length, ushort width, decimal costPerSqFt, decimal discount)
+    {
+        const decimal laborCost = 0.35m;
+        const decimal tax = 8.5m;
+
+        uint area = (uint)(length * width);
+        
+        decimal carpet = costPerSqFt * area;
+        decimal totalLaborCost = laborCost * area;
+        decimal installedPrice = carpet + totalLaborCost;
+        
+        decimal discountedCost = installedPrice - ((discount / 100) * installedPrice);
+        decimal subtotal = totalLaborCost - discountedCost;
+        
+        decimal taxed = subtotal * (tax / 100);
+        decimal total = subtotal + taxed;
+
     }
 }
