@@ -39,7 +39,16 @@ internal static class Problem44
         const decimal tax = 8.5m;
 
         uint area = (uint)(length * width);
-        
+
+        StringBuilder sb = new();
+        sb.AppendLine(string.Format("{0, 30}", "MEASUREMENTS"));
+        sb.AppendLine();
+        sb.AppendLine(string.Format("{0, -30} {1, 30}", "Length (ft)", length));
+        sb.AppendLine(string.Format("{0, -30} {1, 30}", "Width (ft)", width));
+        sb.AppendLine(string.Format("{0, -30} {1, 30}", "Area (sq. ft)", area));
+        WriteLine(sb.ToString());
+        WriteLine();
+
         decimal carpet = costPerSqFt * area;
         decimal totalLaborCost = laborCost * area;
         decimal installedPrice = carpet + totalLaborCost;
@@ -53,7 +62,8 @@ internal static class Problem44
         PrintReport(costPerSqFt, laborCost, carpet, totalLaborCost, installedPrice, discountedCost, subtotal, taxed, total);
     }
 
-    private static void PrintReport(decimal costPerSqFt, decimal laborCost, decimal carpet, 
+    private static void PrintReport(
+        decimal costPerSqFt, decimal laborCost, decimal carpet,
         decimal totalLaborCost, decimal installedPrice, decimal discountedCost, 
         decimal subtotal, decimal taxed, decimal total)
     {
