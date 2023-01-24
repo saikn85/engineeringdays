@@ -50,36 +50,39 @@ internal static class Problem44
         WriteLine();
 
         decimal carpet = costPerSqFt * area;
-        decimal totalLaborCost = laborCost * area;
+        decimal totalLaborCost = laborCost * carpet;
         decimal installedPrice = carpet + totalLaborCost;
         
-        decimal discountedCost = installedPrice - ((discount / 100) * installedPrice);
-        decimal subtotal = totalLaborCost - discountedCost;
+        decimal discountedCost = ((discount / 100) * installedPrice);
+        decimal subtotal = (installedPrice + totalLaborCost) - discountedCost;
         
         decimal taxed = subtotal * (tax / 100);
         decimal total = subtotal + taxed;
 
-        PrintReport(costPerSqFt, laborCost, carpet, totalLaborCost, installedPrice, discountedCost, subtotal, taxed, total);
+        PrintReport(costPerSqFt, laborCost, carpet, totalLaborCost, installedPrice, discount, discountedCost, subtotal, taxed, total);
     }
 
     private static void PrintReport(
         decimal costPerSqFt, decimal laborCost, decimal carpet,
-        decimal totalLaborCost, decimal installedPrice, decimal discountedCost, 
+        decimal totalLaborCost, decimal installedPrice, 
+        decimal discount, decimal discountedCost, 
         decimal subtotal, decimal taxed, decimal total)
     {
         StringBuilder sb = new();
-        //sb.AppendLine("Description\tQuantity\tUnit Price\tTotal Price");
-        //sb.AppendLine("-------------\t--------\t----------\t-----------");
-        //sb.AppendLine(string.Format("{0, -13}\t{1, 8}\t{2, 10:N2}\t{3, 11:N2}", "TV", tvUnitsSold, tvPrice, tvTotal));
-        //sb.AppendLine(string.Format("{0, -13}\t{1, 8}\t{2, 10:N2}\t{3, 11:N2}", "VCR", vcrUnitsSold, vcrPrice, vcrTotal));
-        //sb.AppendLine(string.Format("{0, -13}\t{1, 8}\t{2, 10:N2}\t{3, 11:N2}", "RC", rcUnitsSold, rcPrice, rcTotal));
-        //sb.AppendLine(string.Format("{0, -13}\t{1, 8}\t{2, 10:N2}\t{3, 11:N2}", "CD", cdUnitsSold, cdPrice, cdTotal));
-        //sb.AppendLine(string.Format("{0, -13}\t{1, 8}\t{2, 10:N2}\t{3, 11:N2}", "Tape Recorder", tpUnitsSold, tpPrice, tpTotal));
-        //sb.AppendLine("-------------\t--------\t----------\t-----------");
-        //sb.AppendLine(string.Format("{0, -13}\t{1, 8}\t{2, -10:N2}\t{3, 11:N2}", "", "", "Sub Total", subTotal));
-        //sb.AppendLine(string.Format("{0, -13}\t{1, 8}\t{2, -10:N2}\t{3, 11:N2}", "", "", "Tax", tax));
-        //sb.AppendLine(string.Format("{0, -13}\t{1, 8}\t{2, -10:N2}\t{3, 11:N2}", "", "", "Total", total));
-
+        sb.AppendLine(string.Format("{0, 30}", "CHARGES"));
+        sb.AppendLine();
+        sb.AppendLine(string.Format("{0, -20} {1, 20} {2, 20}", "DESCRIPTION", "COST/SQ.FT", "CHARGE"));
+        sb.AppendLine("-------------------- -------------------- --------------------");
+        sb.AppendLine(string.Format("{0, -20} {1, 20:N2} {2, 20:N2}", "Carpet", costPerSqFt, carpet));
+        sb.AppendLine(string.Format("{0, -20} {1, 20:N2} {2, 20:N2}", "Labour", laborCost, totalLaborCost));
+        sb.AppendLine("-------------------- -------------------- --------------------");
+        sb.AppendLine(string.Format("{0, -20} {1, 20} {2, 20:N2}", "Installed Price", "", installedPrice));
+        sb.AppendLine(string.Format("{0, -20} {1, 19:N2}% {2, 20:N2}", "Discount", discount, discountedCost));
+        sb.AppendLine("-------------------- -------------------- --------------------");
+        sb.AppendLine(string.Format("{0, -20} {1, 20} {2, 20:N2}", "Subtotal", "", subtotal));
+        sb.AppendLine(string.Format("{0, -20} {1, 20} {2, 20:N2}", "Tax", "", taxed));
+        sb.AppendLine(string.Format("{0, -20} {1, 20} {2, 20:N2}", "TOTAL", "", total));
+        
         WriteLine("The Report");
         WriteLine(sb.ToString());
     }

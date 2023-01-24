@@ -9,5 +9,6 @@ using EngineeringDays.Chapter4;
 //Problem37.FibonacciNumber(10);
 //Problem38.PrintNumberPatternScreenOrigin();
 //Problem38.PrintNumberPatternAwayOrigin();
-Problem39.GenerateBill();
+//Problem39.GenerateBill();
 //Problem35.SumDigits();
+Problem44.GenerateBillForCarpetCleaning();
